@@ -22,6 +22,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'token' => TokenMiddleware::class,
         ]);
 
+        $middleware->validateCsrfTokens(
+            except: [
+                'api/*'
+            ]
+            );
+
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
